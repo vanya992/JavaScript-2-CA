@@ -18,5 +18,11 @@
     "script"
   ],
   "author": "Vladimira Dmitrovic <vladmi49062@stud.noroff.no>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
+    "sass": "^1.68.0"
+  }
 }
