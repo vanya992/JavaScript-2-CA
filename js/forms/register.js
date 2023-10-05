@@ -1,5 +1,21 @@
-const form = document.querySelector("#registerForm")
+import { API_SOCIAL } from "../api/constants.mjs"
 
-console.log("Hi")
+const action = "/auth/register";
 
-form.addEventListener("submit")
+export async function register(profile) {
+    const registerURL = API_SOCIAL + action;
+    const body = JSON.stringify(profile);
+
+   const response = await fetch(registerURL, {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body
+   })
+    
+    const result = await response.json();
+
+    alert("You are now registered!");
+    return result;
+}
