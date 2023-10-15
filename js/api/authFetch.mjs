@@ -4,7 +4,7 @@ export function headers() {
     const token = load("token");
     return {
             "Content-Type": "application/json",
-            "Authorization": `Bear ${token}`,
+            "Authorization": `Bearer ${token}`,
     }
 }
 
