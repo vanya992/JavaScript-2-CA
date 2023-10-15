@@ -1,10 +1,12 @@
-// import * as constants from "./api/constants.mjs"
-
-// console.log(constants.API_REGISTER);
-
 
 import { setRegisterFormListener } from "./handlers/register.mjs";
 import { setLoginFormListener } from "./handlers/login.mjs";
+
+import { authFetch } from "./api/authFetch.mjs";
+
+import * as post from "./api/posts/create.mjs"
+
+import * as posts from "./api/posts/index.mjs"
 
 
 
@@ -17,3 +19,8 @@ if (path === '/profile/login/index.html') {
     setRegisterFormListener();
 };
 
+
+createPost({
+    title: "Example Post",
+    body: "Also an example"
+})
