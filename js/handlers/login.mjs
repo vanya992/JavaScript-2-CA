@@ -2,7 +2,6 @@ import { login } from "../forms/login.mjs"
 
 export function setLoginFormListener() {
     const form = document.querySelector("#loginForm");
-    console.log("Hi hi");
 
     if (form) {
         form.addEventListener("submit", (event) => {
