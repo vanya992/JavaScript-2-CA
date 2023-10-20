@@ -1,4 +1,4 @@
-import { register } from "../forms/register.js";
+import { register } from "../auth/register.js";
 
 export function setRegisterFormListener() {
     const form = document.querySelector("#registerForm");

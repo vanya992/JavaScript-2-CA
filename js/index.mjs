@@ -1,10 +1,10 @@
 
-import * as listeners from "./handlers/index.mjs";
+import { setRegisterFormListener} from "../scripts/register.mjs";
 
 
 
 
-import * as templates from "./templates/post.mjs";
+// import * as templates from "./templates/post.mjs";
 
 
 
@@ -14,10 +14,14 @@ const path = location.pathname;
 
 
 if (path === '/profile/login/') {
-    listeners.setLoginFormListener();
+    setLoginFormListener()
 } else if (path === '/profile/register/') {
-    listeners.setRegisterFormListener();
+    setRegisterFormListener()
 } else if (path === '/post/edit/') {
-    listeners.setUpdatePostListener();
-} else if (path === '/post/create/');
+    setUpdatePostListener()
+} else if (path === '/post/create/') {
+    setCreatePostListener()
+} else if (path === "/profile/edit/") {
+    setUpdateProfileListener()
+}
 

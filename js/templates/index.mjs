@@ -15,10 +15,10 @@ export * from "./post.mjs"
 // testTemplate()
 
 
-async function testTemplate() {
-    const posts = await postMethods.getPosts();
-    const container = document.querySelector("#posts");
-    renderPostTemplates(posts, container)
-}
+// async function testTemplate() {
+//     const posts = await postMethods.getPosts();
+//     const container = document.querySelector("#posts");
+//     renderPostTemplates(posts, container)
+// }
 
-testTemplate()
+// testTemplate()
