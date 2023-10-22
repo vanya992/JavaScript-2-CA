@@ -43,8 +43,9 @@
                 <div class="card h-50 col-md-3 mb-2 me-2 p-2">
                    <form id="postForm">
                                 <div class="form-group mt-2">
-                                <input class="form-control my-2" type="text" id="postTitle" placeholder="Title">
-                                <textarea class="form-control my-2" id="postBody" placeholder="Say something"></textarea>
+                                <input class="form-control my-2" type="text" id="postTitle" placeholder="Title (required)" required>
+                                <textarea class="form-control my-2" id="postBody" placeholder="Say something (optional)"></textarea>
+                                <input class="form-control my-2" type="url" id="postMedia" placeholder="Add media (optional)" >
                                 <button class="btn btn-primary" type="submit">Create Post</button>
                             </form>
                         </div>
