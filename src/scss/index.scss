@@ -1,0 +1,35 @@
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+@import "variables";
+
+@font-face {
+    font-family: "Rosmatica";
+    src: url(../../rosmatika-font/RosmatikaRegular-BWA45.ttf);
+}
+
+
+$theme-colors:
+    $purple;
+
+$primary: $pink;
+$secondary: $indigo;
+$cta: $blue;
+    
+
+body {
+    background-color: $theme-colors;
+}
+
+h1,
+h3 {
+    font-family: "Rosmatica";
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
