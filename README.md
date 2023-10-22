@@ -26,6 +26,11 @@ StudentWEB is social app that is designed for my school project. It is a web sit
 - Youtube (@webdevsimplified)
 - ChatGPT
 
+## Author:
+
+Vladimira Dmitrovic (https://github.com/vanya992)
+
+
 
 
 
