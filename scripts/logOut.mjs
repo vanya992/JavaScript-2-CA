@@ -8,7 +8,3 @@ export function logOutButton() {
 })}
 
 
-export function userProfileDisplay() {
-
-
-}

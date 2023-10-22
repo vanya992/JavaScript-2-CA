@@ -20,7 +20,7 @@ export async function deletePost(postId) {
           'Authorization': `Bearer ${token}`,
       },
       });
-  console.log(response)
+      console.log(response)
       if (response.status === 200) {
     
         alert('Post deleted successfully.');

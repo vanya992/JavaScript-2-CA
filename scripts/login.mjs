@@ -1,8 +1,5 @@
 import { LOGIN } from "./constants.mjs";
 
-
-
-
 async function login(profile) {
   const loginURL = LOGIN;
   const body = JSON.stringify(profile);

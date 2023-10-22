@@ -41,13 +41,13 @@ function displaySinglePost() {
             const postContainer = document.getElementById('singlePost');
            
             if (post) {
-                const imageHtml = post.media ? `<img src="${post.media}" class="img-thumbnail">` : ''
+                const imageHtml = post.media ? `<img src="${post.media}" class="img-thumbnail img-fluid">` : ''
                 postContainer.innerHTML = `
                   <div class="d-flex justify-content-between">
                     <h1>${post.author.name}</h1>
                     <div>
                       <button class="btn btn-light delete-post" data-postId="${post.id}">Delete Post</button>
-                      <a href="./update/index.html"><button class="btn btn-light edit-post">Edit Post</button></a>
+                      <a href="./update/index.html?id=${postId}"><button class="btn btn-light edit-post data-postId="${post.id}">Edit Post</button></a>
                     </div>
                   </div>
                   <h2>${post.title}</h2>
