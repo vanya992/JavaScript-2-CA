@@ -3,14 +3,25 @@ import { API_SOCIAL_BASE } from "../constants.mjs";
 const action = "/posts";
 
 
+export async function deletePost(postId) {
+ console.log(postId)
+    if (!postId) {
+      console.error('Post ID not provided in URL.');
+      return;
+    }
 
-async function deletePost(postId) {
+  const token = localStorage.getItem("token")
+ 
     try {
       const response = await fetch(`${API_SOCIAL_BASE}${action}/${postId}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': `Bearer ${token}`,
+      },
       });
-  
-      if (response.status === 204) {
+  console.log(response)
+      if (response.status === 200) {
     
         alert('Post deleted successfully.');
         
@@ -24,19 +35,19 @@ async function deletePost(postId) {
   }
   
   
-  export function addDeleteButtonEventListeners() {
-    const deleteButtons = document.querySelectorAll('.delete-post');
-  
-    deleteButtons.forEach((button) => {
-      button.addEventListener('click', async (event) => {
-        const postId = event.currentTarget.getAttribute('data-postId');
-        const confirmDelete = confirm('Are you sure you want to delete this post?');
-  
-        if (confirmDelete) {
-          await deletePost(postId);
-        }
-      });
-    });
+export function deletePostEventListener(event) {
+  if (event.target.classList.contains('delete-post')) {
+    const confirmDelete = confirm('Are you sure you want to delete this post?');
+    if (confirmDelete) {
+      const postId = event.target.getAttribute('data-postId');
+      deletePost(postId);
+    }
   }
+}
+
+
+
   
   
+
+

@@ -1,10 +1,17 @@
 import { POSTS } from "../constants.mjs";
 import { POSTS_FLAG } from "../constants.mjs";
+import { deletePostEventListener } from "./delete.mjs";
+import { logOutButton } from "../logOut.mjs";
 
+
+document.getElementById('singlePost').addEventListener('click', deletePostEventListener);
+logOutButton()
+
+export let postId;
 
 function displaySinglePost() {
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get('id');
+  const urlParams = new URLSearchParams(window.location.search);
+  postId = urlParams.get('id');
   
     if (!postId) {
       console.error('Post ID not provided in URL.');
@@ -18,7 +25,7 @@ function displaySinglePost() {
       return;
     }
   
-    fetch(`${POSTS}/${postId}?_author=true`, {
+    fetch(`${POSTS}/${postId}${POSTS_FLAG}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -28,7 +35,6 @@ function displaySinglePost() {
         if (!response.ok) {
           throw new Error('Failed to fetch the specific post.');
         }
-          console.log(response)
         return response.json();
       })
         .then((post) => {   
@@ -41,7 +47,7 @@ function displaySinglePost() {
                     <h1>${post.author.name}</h1>
                     <div>
                       <button class="btn btn-light delete-post" data-postId="${post.id}">Delete Post</button>
-                      <button class="btn btn-light">Edit Post</button>
+                      <a href="./update/index.html"><button class="btn btn-light edit-post">Edit Post</button></a>
                     </div>
                   </div>
                   <h2>${post.title}</h2>
@@ -59,6 +65,8 @@ function displaySinglePost() {
       });
   }
   
-  displaySinglePost();
+displaySinglePost();
+
+
   
   

@@ -1,12 +1,12 @@
 import { PROFILE } from "./constants.mjs";
 import { POSTS } from "./constants.mjs";
-import { addDeleteButtonEventListeners } from "./posts/delete.mjs";
+
 
 const authorDisplay = '?_author=true';
 import { logOutButton } from "./logOut.mjs";
 
-logOutButton()
-addDeleteButtonEventListeners()
+logOutButton();
+
 
 
   function displayUserProfile() {
@@ -77,13 +77,15 @@ addDeleteButtonEventListeners()
               const userPostsOnly = userPosts.filter(post => post.author.name === name);
               if (userPostsOnly.length > 0) {
                 const posts = userPostsOnly.map(post => `
-                  <div class="d-flex justify-content-between"><div><h2>${post.author.name}</h2></div></div>
-                  <div>
-                  <a href="../profile/post/edit/index.html?id=${post.id}"><h2>${post.title}</h2> 
-                  <p>${post.body}</p></div></a>
-                  <div>
-                  <button class="btn btn-primary"></i>Like <i class="bi bi-heart-fill"></i> </button>  <button class="btn btn-primary">Comment <i class="bi bi-chat-fill"></i></button><hr>
-              `);
+                  <div class="d-flex justify-content-between">
+                 <div><h1>${post.author.name}</h1></div></div>
+                 <div><a href="./post/index.html?id=${post.id}">
+                <h2>${post.title}</h2> 
+                  <p>${post.body}</p>
+                ${post.media ? `<img src="${post.media}" class="img-thumbnail">` : ''} </a></div>
+              <div> <button class="btn btn-primary"></i>Like <i class="bi bi-heart-fill"></i> </button> <button class="btn btn-primary">Comment <i class="bi bi-chat-fill"></i></button></div> <hr>`
+                );
+
                 postsList.innerHTML = posts.join('');
               } else {
                 postsList.innerHTML = '<p>No posts found for this user.</p>';
