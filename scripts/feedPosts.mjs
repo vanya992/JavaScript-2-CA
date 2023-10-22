@@ -1,17 +1,15 @@
 import { POSTS } from "./constants.mjs";
 import { logOutButton } from "./logOut.mjs";
-
+import { POSTS_FLAG } from "./constants.mjs";
 
 logOutButton()
 
-
-const authorOfPosts = '?_author=true';
  const token = localStorage.getItem("token");
 
  
  async function fetchAndDisplayPosts() {
      try {
-         const response = await fetch(POSTS + authorOfPosts, {
+         const response = await fetch(POSTS + POSTS_FLAG, {
              method: 'GET',
              headers: {
                  'Content-Type': "application/json",

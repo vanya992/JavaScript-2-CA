@@ -2,51 +2,49 @@ import { POSTS } from "../constants.mjs";
 import { POSTS_FLAG } from "../constants.mjs";
 
 const urlParams = new URLSearchParams(window.location.search);
-const postId = urlParams.get('id');
-
+const postId = urlParams.get("id");
 
 function updatePost(editPostId) {
-  const token = localStorage.getItem('token');
-  const postContainer = document.getElementById('updatePost')
-  
+  const token = localStorage.getItem("token");
+  const postContainer = document.getElementById("updatePost");
+
   if (!editPostId) {
-    console.error('Post ID not provided in URL.');
+    console.error("Post ID not provided in URL.");
     return;
   }
 
   fetch(`${POSTS}/${editPostId}${POSTS_FLAG}`, {
-    method: 'GET',
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Failed to fetch the specific post.');
+        throw new Error("Failed to fetch the specific post.");
       }
       return response.json();
     })
     .then((post) => {
-      const editForm = document.createElement('form');
-      editForm.classList.add('form-control');
+      const editForm = document.createElement("form");
+      editForm.classList.add("form-control");
       editForm.innerHTML = `
         <input class="form-control m-2" type="text" id="edit-title" value="${post.title}">
         <textarea class="form-control m-2" id="edit-body">${post.body}</textarea>
         <button class="btn btn-light m-2" id="save-edit" data-postId="${post.id}">Save Changes</button>
       `;
 
-      const saveEditButton = editForm.querySelector('#save-edit');
-      saveEditButton.addEventListener('click', () => {
-        const editedTitle = editForm.querySelector('#edit-title').value;
-        const editedBody = editForm.querySelector('#edit-body').value;
+      const saveEditButton = editForm.querySelector("#save-edit");
+      saveEditButton.addEventListener("click", () => {
+        const editedTitle = editForm.querySelector("#edit-title").value;
+        const editedBody = editForm.querySelector("#edit-body").value;
 
-        
         fetch(`${POSTS}/${post.id}`, {
-          method: 'PUT',
+          method: "PUT",
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
             title: editedTitle,
@@ -55,22 +53,19 @@ function updatePost(editPostId) {
         })
           .then((updateResponse) => {
             if (!updateResponse.ok) {
-              throw new Error('Failed to update the post.');
+              throw new Error("Failed to update the post.");
             }
             return updateResponse.json();
           })
           .then((updatedPost) => {
-           
-            console.log('Post updated:', updatedPost);
+            console.log("Post updated:", updatedPost);
 
-            
-            alert('Post updated successfully');
+            alert("Post updated successfully");
 
-            
             window.location.href = `../index.html?=${postId}`;
           })
           .catch((updateError) => {
-            console.error('Error updating the post:', updateError);
+            console.error("Error updating the post:", updateError);
           });
 
         editForm.remove();
@@ -79,13 +74,8 @@ function updatePost(editPostId) {
       postContainer.appendChild(editForm);
     })
     .catch((error) => {
-      console.error('Error fetching the specific post:', error);
+      console.error("Error fetching the specific post:", error);
     });
 }
 
-updatePost(postId)
-
-
-  
- 
-  
+updatePost(postId);
